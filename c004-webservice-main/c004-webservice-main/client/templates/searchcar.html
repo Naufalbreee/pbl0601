@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{appType}} | Car Project</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{appType}} | Car Project</h1>
+                <h3>Demo:
+                        <a href="{{url_for('createcar')}}">Create</a> /
+                        <a href="{{url_for('readcar')}}">Read</a> /
+                        <a href="{{url_for('updatecar')}}">Update</a> /
+                        <a href="{{url_for('deletecar')}}">Delete</a> /
+                        <a href="{{url_for('searchcar')}}">Search</a>
+                </h3> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Search Car Data</h4>
+                <form role="form" action="{{url_for('searchcar')}}" method="POST">
+                    <div class="form-group">
+                        <label for="keyword">Kata Kunci (Nama / Merek / Model / Harga)</label>
+                        <input type="text" class="form-control" name="keyword" value="{{keyword}}" placeholder="Contoh: Red Car atau Ferrari" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        {% if keyword %}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <h4>Hasil Pencarian untuk: "{{keyword}}"</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Car Name</th>
+                            <th>Car Brand</th>
+                            <th>Car Model</th>
+                            <th>Car Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                        <tr>
+                            <td>{{row['carname']}}</td>
+                            <td>{{row['carbrand']}}</td>
+                            <td>{{row['carmodel']}}</td>
+                            <td>{{row['carprice']}}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4">Data tidak ditemukan.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+  </div>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>

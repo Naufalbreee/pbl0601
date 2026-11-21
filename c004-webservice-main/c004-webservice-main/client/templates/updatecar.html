@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{appType}} | Car Project</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{appType}} | Car Project</h1>
+                <h3>Demo:
+                        <a href="{{url_for('createcar')}}">Create</a> /
+                        <a href="{{url_for('readcar')}}">Read</a> /
+                        <a href="{{url_for('updatecar')}}">Update</a> /
+                        <a href="{{url_for('deletecar')}}">Delete</a> /
+                        <a href="{{url_for('searchcar')}}">Search</a>
+                </h3> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Update Car Data</h4>
+                <form role="form" action="{{url_for('updatecarsave')}}" method="POST">
+                    <div class="form-group">
+                        <label for="carName">Car Name (Target Data yang Diubah)</label>
+                        <input type="text" class="form-control" name="carName" placeholder="Masukkan nama mobil yang sudah ada" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carBrand">New Car Brand</label>
+                        <input type="text" class="form-control" name="carBrand" placeholder="Merek baru" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">New Car Model</label>
+                        <input type="text" class="form-control" name="carModel" placeholder="Model baru" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carPrice">New Car Price</label>
+                        <input type="text" class="form-control" name="carPrice" placeholder="Harga baru" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Update Data</button>
+                </form>
+            </div>
+        </div>
+  </div>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>
